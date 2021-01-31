@@ -1,0 +1,19 @@
+{
+  "name": "04_weather_website",
+  "version": "1.0.0",
+  "description": "Wetter Webseite",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KellerKing/WeatherWebsite.git"
+  },
+  "author": "Luca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KellerKing/WeatherWebsite/issues"
+  },
+  "homepage": "https://github.com/KellerKing/WeatherWebsite#readme"
+}
