@@ -1,0 +1,9 @@
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\bin\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.deps.json
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\bin\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\bin\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.pdb
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\obj\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.csprojAssemblyReference.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\obj\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.AssemblyInfoInputs.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\obj\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.AssemblyInfo.cs
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\obj\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.csproj.CoreCompileInputs.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\obj\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPI\WeatherAPI.ServiceLibrary\obj\Debug\netcoreapp3.1\WeatherAPI.ServiceLibrary.pdb
