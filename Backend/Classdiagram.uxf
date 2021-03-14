@@ -1,0 +1,50 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Space for diagram notesf</help_text><element><id>UMLClass</id><coordinates><x>124</x><y>1144</y><w>370</w><h>150</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+IDatabaseConnector
+-
+- Connection : MySqlConnection
+-
++saveToWeatherToDatabase(WeatherDataFromDbDTO) : void
++getOrteToRefresh() : List&lt;SearchResultDTO&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>824</x><y>1214</y><w>190</w><h>70</h></coordinates><panel_attributes>Database Connector</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>484</x><y>1234</y><w>360</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;340;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>414</x><y>594</y><w>190</w><h>80</h></coordinates><panel_attributes>Buisnesslogic</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1264</x><y>214</y><w>380</w><h>160</h></coordinates><panel_attributes>RefreshService
+-
+
+-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1154</x><y>1214</y><w>150</w><h>70</h></coordinates><panel_attributes>API Connector</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1424</x><y>1194</y><w>280</w><h>100</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+IApiConnector
+-
+-apiKey : string
+-
++getWeatherByOrt(string) : WeatherDataFromApiDTO
+....
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1294</x><y>1234</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1484</x><y>1391</y><w>150</w><h>40</h></coordinates><panel_attributes>WeatherDataFromApiDTO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>64</x><y>669</y><w>1160</w><h>880</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>1140;620;1140;860;10;860;10;50;390;50;390;10</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>669</y><w>440</w><h>560</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>420;540;420;420;10;420;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1544</x><y>1287</y><w>80</w><h>120</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;creates&gt;&gt;</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1794</x><y>1447</y><w>150</w><h>40</h></coordinates><panel_attributes>WeatherDataFromDbDTO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1764</x><y>1037</y><w>380</w><h>110</h></coordinates><panel_attributes>ApiToDbConverter
+-
+
+-
+_+ConvertApiToDbDTO(WeatherApiDTO) : WeatherDataFromDbDTO_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>554</x><y>667</y><w>1390</w><h>390</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>1370;370;1370;150;10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1824</x><y>1137</y><w>80</w><h>330</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;creates&gt;&gt;</panel_attributes><additional_attributes>10;310;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>764</x><y>214</y><w>440</w><h>160</h></coordinates><panel_attributes>WeatherController
+-
+
+-
+[HTTP Get]
++SearchByOrt[From Query] ort) : IActionResult(List&lt;SearchDbDTO&gt;)
+
+[HTTP Get]
++GetWeatherByOrt(string) : WeatherDataFromDbDTO
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>884</x><y>1394</y><w>120</w><h>40</h></coordinates><panel_attributes>SearchResultDTO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>514</x><y>369</y><w>460</w><h>240</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;220;10;50;440;50;440;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1274</x><y>562</y><w>350</w><h>130</h></coordinates><panel_attributes>RefreshServiceLogic
+-
+
+-
+_+RefreshWeatherData() : void_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1444</x><y>369</y><w>30</w><h>210</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1224</x><y>684</y><w>240</w><h>550</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;530;10;410;220;410;220;10</additional_attributes></element><element><id>Relation</id><coordinates><x>914</x><y>1277</y><w>80</w><h>140</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;creates&gt;&gt;</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1004</x><y>684</y><w>390</w><h>570</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;550;80;550;80;90;370;90;370;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1874</x><y>284</y><w>160</w><h>80</h></coordinates><panel_attributes>&lt;&lt;IHostetService&gt;&gt;
+-
+
+-
++start
++stop</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1634</x><y>314</y><w>260</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>2324</x><y>1184</y><w>140</w><h>370</h></coordinates><panel_attributes>Data access
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>2324</x><y>504</y><w>140</w><h>300</h></coordinates><panel_attributes>Logic
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>2324</x><y>164</y><w>140</w><h>300</h></coordinates><panel_attributes>Controller / Exposed
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>404</x><y>1297</y><w>1450</w><h>340</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;creates&gt;&gt;</panel_attributes><additional_attributes>1430;200;1430;320;10;320;10;10</additional_attributes></element></diagram>

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WeatherAPI.Controllers;
 using WeatherAPI.Models;
 
 namespace WeatherAPI
@@ -30,13 +31,17 @@ namespace WeatherAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddTransient<Connection>(_ => new Connection(new MySqlConnection(Configuration["ConnectionStrings:Default"]), Configuration["ApiKey"]));
+      services.AddSingleton<Connection>(_ => new Connection(new MySqlConnection(Configuration["ConnectionStrings:Default"]), Configuration["ApiKey"]));
       
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherAPI", Version = "v1" });
       });
+
+
+      services.AddTransient<IHostedService, RefreshServiceLogic>();
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -36,7 +36,7 @@ namespace WeatherAPI.Controllers
       .ToArray();
     }
 
-    [HttpGet("hallo")]
+    [HttpPost("hallo")]
     public string getHallo()
     {
       return "Ich liebe dich";

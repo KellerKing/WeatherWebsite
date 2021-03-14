@@ -1,13 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
 using System.Threading.Tasks;
 using WeatherAPI.Models;
-using WeatherAPI.ServiceLibrary.Domains;
-using WeatherAPI.ServiceLibrary.Entities;
 using WeatherAPI.ServiceLibrary.Repos;
 
 namespace WeatherAPI.Controllers
@@ -32,13 +26,7 @@ namespace WeatherAPI.Controllers
     //[FromForm] values from form posted in form fields
     //[FromHeader] values from HTTP Header
     //[FromBody] values from requestbody
-    [HttpGet]
-    public IActionResult AddNewBesipiel([FromQuery]BeispielEntity beispiel)
-    {
-      var bl = new WeahterBuisnessLogic();
-      bl.Save(beispiel);
-      return Ok();
-    }
+
     //[NonAction]
     [HttpGet("einTest")] //api/WeatherController/GetFromQueryAsync?pageSize=10&pageNumber=2
     public async Task<IActionResult> GetFromQueryAsync([FromQuery] int pageSize, [FromQuery]int pageNumber)
@@ -68,10 +56,11 @@ namespace WeatherAPI.Controllers
 
       return Ok(pageSize + " " + pageNumber);
     }
-    [HttpGet("CurrentWeather")]
+    [HttpPost("CurrentWeather")]
     public async Task<IActionResult> GetCurrentWeatherAsync([FromQuery] string search)
     {
       var queryResult = await OpenWeatherRepo.TestAsync($"https://api.openweathermap.org/data/2.5/weather?q={search}&appid={_apiKey}");
+      //DatabaseRepo.SaveToDatabase(_connection ,queryResult);
       return Ok(queryResult);
     }
 
