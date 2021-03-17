@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WeatherAPI.Models
 {
-  public class Connection
+  public class ConnectionData
   {
 
-    public Connection(MySqlConnection connection, string apiKey)
+    public ConnectionData(MySqlConnection connection, string apiKey)
     {
       SqlConnection = connection;
       ApiKey = apiKey;

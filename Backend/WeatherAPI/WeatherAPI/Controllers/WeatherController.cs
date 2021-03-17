@@ -14,7 +14,7 @@ namespace WeatherAPI.Controllers
     private MySqlConnection _connection;
     private string _apiKey;
 
-    public WeatherController(Connection connection)
+    public WeatherController(ConnectionData connection)
     {
       _connection = connection.SqlConnection;
       _apiKey = connection.ApiKey;

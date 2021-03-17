@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WeatherAPI.ServiceLibrary.Entities
 {
-  public class WeatherFetchDTO 
+  public class WeatherDataFromApiDTO 
   {
 
     [JsonProperty("coord")]
