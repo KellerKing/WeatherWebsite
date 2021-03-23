@@ -1,6 +1,10 @@
-﻿using MySqlConnector;
+﻿using Dapper;
+using MySqlConnector;
+using Service.Database;
+using Service.Database.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherAPI.Models;
@@ -10,7 +14,36 @@ namespace WeatherAPI.DataAccess
 {
   public class DatabaseConnector : IDatabaseConnector
   {
-    public List<SearchResultDTO> GetOrteToRefresh(MySqlConnection connecton)
+    public void ClearOldTempEntries(MySqlConnection connecton, DateTime beforeDate)
+    {
+      var procedure = QueryCommands.commands[(int)CommandEnum.ClearOldEntrys];
+
+      using (connecton)
+      {
+        //beforeTimeParam
+        connecton.ExecuteAsync(procedure, new { beforeTimeparam = beforeDate }, commandType: System.Data.CommandType.StoredProcedure);
+      }
+
+      //var cmd = new MySqlCommand(procedure, connecton);
+      //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+      //try
+      //{
+      //  connecton.Open();
+      //  cmd.ExecuteNonQuery();
+      //  Console.WriteLine("Delete");
+      //}
+      //catch (Exception ex)
+      //{
+      //  Console.WriteLine(ex.Message);
+      //}
+      //finally
+      //{
+      //  connecton.Close();
+      //}
+    }
+
+    public List<SearchResultDTO> GetOrteToRefresh(MySqlConnection connecton) //TODO: Löschen
     {
       List<SearchResultDTO> searchResults = new List<SearchResultDTO>();
 
@@ -47,38 +80,38 @@ namespace WeatherAPI.DataAccess
     }
 
 
-    public void SaveWeatherToDatabase(WeatherDataFromApiDTO weatherData, MySqlConnection connecton)
+    public async Task<List<GemeindeDTO>> GetOrteToRefreshAsync(MySqlConnection connecton)
+    {
+      var procedure = QueryCommands.commands[(int)CommandEnum.GetAllOrteInDb];
+      IEnumerable<GemeindeDTO> orte;
+
+
+      using (var cnn = new MySqlConnection("server=127.0.0.1;user=root;password=1234;database=test"))
+      {
+        orte = await cnn.QueryAsync<GemeindeDTO>(procedure, null, commandType: System.Data.CommandType.StoredProcedure);
+      }
+
+      return orte.ToList();
+    }
+
+    public Task SaveWeatherToDatabaseAsync(TempDTO weatherData, MySqlConnection connecton)
     {
       var procedure = QueryCommands.commands[(int)CommandEnum.InsertSingleWeatherInDb];
-      using var cmd = new MySqlCommand(procedure, connecton);
-      cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-      cmd.Parameters.AddWithValue("@sTimeParam", DateTime.Now);
-      cmd.Parameters.AddWithValue("@ortParam", weatherData.Name);
-      cmd.Parameters.AddWithValue("@tempMaxParam", weatherData.Main.TempMax);
-      cmd.Parameters.AddWithValue("@tempMinParam", weatherData.Main.TempMin);
-      cmd.Parameters.AddWithValue("@tempCurrentParam", weatherData.Main.Temp);
-      cmd.Parameters.AddWithValue("@descriptionParam", weatherData.Weather.First().Description);
-
-      try
+      using (connecton)
       {
-        connecton.Open();
-        cmd.ExecuteNonQuery();
-        Console.WriteLine("save");
+        return connecton.ExecuteAsync(procedure,
+          new
+          {
+            sTimeparam        = weatherData.Time,
+            ortParam          = weatherData.Ort,
+            tempMaxParam      = weatherData.TempMax,
+            tempMinParam      = weatherData.TempMin,
+            tempCurrentParam  = weatherData.TempCurrent,
+            descriptionParam  = weatherData.Description
+          },
+          commandType: System.Data.CommandType.StoredProcedure);
       }
-      catch (Exception ex)
-      {
-        Console.WriteLine(ex.Message);
-      }
-      finally
-      {
-        connecton.Close();
-      }
-
-      
-
-      
-
     }
   }
 }

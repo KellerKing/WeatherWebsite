@@ -31,6 +31,8 @@ namespace WeatherAPI.Controllers
     [HttpGet("einTest")] //api/WeatherController/GetFromQueryAsync?pageSize=10&pageNumber=2
     public async Task<IActionResult> GetFromQueryAsync([FromQuery] int pageSize, [FromQuery]int pageNumber)
     {
+
+      //https://api.openweathermap.org/data/2.5/onecall?lat=49.177417&lon=8.675670&exclude=current,daily,alerts,minutely&appid=f3de9af35f786230cdfa898028003eee
       var x = await OpenWeatherRepo.TestAsync($"https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid={_apiKey}f3de9af35f786230cdfa898028003eee");
       //try
       //{

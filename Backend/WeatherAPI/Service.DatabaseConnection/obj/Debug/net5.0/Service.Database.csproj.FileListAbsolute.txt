@@ -1,0 +1,12 @@
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\bin\Debug\net5.0\Service.Database.deps.json
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\bin\Debug\net5.0\Service.Database.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\bin\Debug\net5.0\ref\Service.Database.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\bin\Debug\net5.0\Service.Database.pdb
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.csprojAssemblyReference.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.GeneratedMSBuildEditorConfig.editorconfig
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.AssemblyInfoInputs.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.AssemblyInfo.cs
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.csproj.CoreCompileInputs.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\ref\Service.Database.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.DatabaseConnection\obj\Debug\net5.0\Service.Database.pdb
