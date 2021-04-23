@@ -1,18 +1,20 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-namespace WeatherAPI.ServiceLibrary.Entities
+namespace Service.ApiConnector.DTOS
 {
-  public class WeatherDataFromApiDTO 
+  public class ActualWeatherDTO
   {
-
     [JsonProperty("coord")]
     public Coord Coord { get; set; }
 
     [JsonProperty("weather")]
-    public List<Weather> Weather { get; set; }
+    public List<ActualWeather> Weather { get; set; }
 
     [JsonProperty("base")]
     public string Base { get; set; }
@@ -46,11 +48,12 @@ namespace WeatherAPI.ServiceLibrary.Entities
 
     [JsonProperty("cod")]
     public int Cod { get; set; }
-   
   }
 
 
 
+
+  // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
   public class Coord
   {
     [JsonProperty("lon")]
@@ -60,7 +63,7 @@ namespace WeatherAPI.ServiceLibrary.Entities
     public double Lat { get; set; }
   }
 
-  public class Weather
+  public class ActualWeather
   {
     [JsonProperty("id")]
     public int Id { get; set; }
@@ -94,6 +97,12 @@ namespace WeatherAPI.ServiceLibrary.Entities
 
     [JsonProperty("humidity")]
     public int Humidity { get; set; }
+
+    [JsonProperty("sea_level")]
+    public int SeaLevel { get; set; }
+
+    [JsonProperty("grnd_level")]
+    public int GrndLevel { get; set; }
   }
 
   public class Wind
@@ -103,6 +112,9 @@ namespace WeatherAPI.ServiceLibrary.Entities
 
     [JsonProperty("deg")]
     public int Deg { get; set; }
+
+    [JsonProperty("gust")]
+    public double Gust { get; set; }
   }
 
   public class Clouds
@@ -128,5 +140,6 @@ namespace WeatherAPI.ServiceLibrary.Entities
     [JsonProperty("sunset")]
     public int Sunset { get; set; }
   }
+
 
 }

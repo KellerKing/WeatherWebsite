@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Service.ApiConnector.DTOS;
+using Service.ApiConnector.Interface;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WeatherAPI.Models;
-using WeatherAPI.ServiceLibrary.Entities;
 
 namespace WeatherAPI.DataAccess
 {
   public class ApiConnector : IApiConnector
   {
-    //f3de9af35f786230cdfa898028003eee
     private string _apiKey;
 
     public ApiConnector(string apiKey)
@@ -17,30 +16,32 @@ namespace WeatherAPI.DataAccess
       _apiKey = apiKey;
     }
 
-    public async Task<WeatherDataFromApiDTO> LoadWeatherFromApiByOrtAsync(SearchResultDTO orte)
-    {
-      //string ortToSearch = GetSingleDataFromOrteDTO(orte);
-      var queryString = $"https://api.openweathermap.org/data/2.5/weather?q={GetSingleDataFromOrteDTO(orte)}&appid={_apiKey}";
 
-      using (HttpResponseMessage responseMessage = await new HttpClient().GetAsync(queryString))
+    private async Task<T> CallWeatherApi<T>(string query)
+    {
+      using (HttpResponseMessage responseMessage = await new HttpClient().GetAsync(query))
       {
         if (responseMessage.IsSuccessStatusCode)
         {
-          var result = JsonConvert.DeserializeObject<WeatherDataFromApiDTO>(await responseMessage.Content.ReadAsStringAsync());
+          var result = JsonConvert.DeserializeObject<T>(await responseMessage.Content.ReadAsStringAsync());
           return result;
 
         }
         throw new Exception();
       }
-
-
-
     }
 
-
-    private string GetSingleDataFromOrteDTO(SearchResultDTO dto)
+    public async Task<ActualWeatherDTO> LoadWeatherActualAsync(ParameterDTO orte)
     {
-      return dto.Ort;
+      var queryString = $"https://api.openweathermap.org/data/2.5/weather?q={orte.Ort}&appid={_apiKey}";
+
+      return await CallWeatherApi<ActualWeatherDTO>(queryString);
+    }
+
+    public async Task<WeatherDataFromApiModel> LoadWeatherForecastsAsync(ParameterDTO orte)
+    {
+      var queryString = $"https://api.openweathermap.org/data/2.5/onecall?lat={orte.Lat}&lon={orte.Lon}&exclude=current,daily,alerts,minutely&appid={_apiKey}";
+      return await CallWeatherApi<WeatherDataFromApiModel>(queryString);
     }
   }
 }

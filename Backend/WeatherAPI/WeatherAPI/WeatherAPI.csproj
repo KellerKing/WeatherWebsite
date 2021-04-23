@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Service.ApiConnector\Service.ApiConnector.csproj" />
     <ProjectReference Include="..\Service.DatabaseConnection\Service.Database.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "YQ5TSITRR36Mf6iNsOIhjKHE12STG9RA9kSIJs2nwY2WyXU64hJK08HKJBCIbu9QP55+N+jKVGrSviyI+Zryvw==",
+  "success": true,
+  "projectFilePath": "G:\\Personal\\03_Programmieren\\04_Weather_Website\\Backend\\WeatherAPI\\Service.ApiConnector\\Service.ApiConnector.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Andre\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

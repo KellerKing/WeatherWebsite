@@ -10,10 +10,11 @@ namespace WeatherAPI.DataAccess
   public interface IDatabaseConnector
   {
 
-    public Task SaveWeatherToDatabaseAsync(TempDTO weatherData, MySqlConnection connecton);
-
-    public Task<List<GemeindeDTO>> GetOrteToRefreshAsync(MySqlConnection connecton);
-
-    public void ClearOldTempEntries(MySqlConnection connecton, DateTime beforeDate);
+    public void SaveWeatherToDatabaseAsync(TempDTO weatherData);
+    public Task<List<GemeindeDTO>> GetOrteToRefreshAsync();
+    public void ClearOldTempEntries(DateTime beforeDate);
+    public Task<List<TempDTO>> GetAllForecastsAsync();
+    public Task<List<TempDTO>> GetAllActualAsync();
+    public int DeleteTempById(List<TempDTO> ids);
   }
 }

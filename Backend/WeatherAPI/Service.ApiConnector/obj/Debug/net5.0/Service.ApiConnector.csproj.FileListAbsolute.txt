@@ -1,0 +1,12 @@
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\bin\Debug\net5.0\Service.ApiConnector.deps.json
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\bin\Debug\net5.0\Service.ApiConnector.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\bin\Debug\net5.0\ref\Service.ApiConnector.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\bin\Debug\net5.0\Service.ApiConnector.pdb
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.csprojAssemblyReference.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.GeneratedMSBuildEditorConfig.editorconfig
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.AssemblyInfoInputs.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.AssemblyInfo.cs
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.csproj.CoreCompileInputs.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\ref\Service.ApiConnector.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\Service.ApiConnector\obj\Debug\net5.0\Service.ApiConnector.pdb

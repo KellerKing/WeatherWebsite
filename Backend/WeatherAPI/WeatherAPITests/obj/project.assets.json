@@ -1006,6 +1006,19 @@
           }
         }
       },
+      "Service.ApiConnector/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Service.ApiConnector.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.ApiConnector.dll": {}
+        }
+      },
       "Service.Database/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -1029,6 +1042,7 @@
           "Dapper": "2.0.78",
           "MySqlConnector": "1.3.2",
           "Newtonsoft.Json": "12.0.3",
+          "Service.ApiConnector": "1.0.0",
           "Service.Database": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.Data.SqlClient": "4.8.2"
@@ -3631,6 +3645,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Service.ApiConnector/1.0.0": {
+      "type": "project",
+      "path": "../Service.ApiConnector/Service.ApiConnector.csproj",
+      "msbuildProject": "../Service.ApiConnector/Service.ApiConnector.csproj"
     },
     "Service.Database/1.0.0": {
       "type": "project",

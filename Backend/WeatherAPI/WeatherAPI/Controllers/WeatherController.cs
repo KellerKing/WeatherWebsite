@@ -2,7 +2,6 @@
 using MySqlConnector;
 using System.Threading.Tasks;
 using WeatherAPI.Models;
-using WeatherAPI.ServiceLibrary.Repos;
 
 namespace WeatherAPI.Controllers
 {
@@ -32,38 +31,12 @@ namespace WeatherAPI.Controllers
     public async Task<IActionResult> GetFromQueryAsync([FromQuery] int pageSize, [FromQuery]int pageNumber)
     {
 
-      //https://api.openweathermap.org/data/2.5/onecall?lat=49.177417&lon=8.675670&exclude=current,daily,alerts,minutely&appid=f3de9af35f786230cdfa898028003eee
-      var x = await OpenWeatherRepo.TestAsync($"https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid={_apiKey}f3de9af35f786230cdfa898028003eee");
-      //try
-      //{
-      //  _connection.Open();
-      //  using var command = new MySqlCommand("Insert INTO test Set PETER = 1, Rüdiger ='Ich bin toll';", _connection);
-      //  using var reader = await command.ExecuteReaderAsync();
-
-      //  while (await reader.ReadAsync())
-      //  {
-      //    var value = reader.GetValue(0);
-      //    // do something with 'value'
-      //  }
-      //}
-      //catch (Exception)
-      //{
-
-      //  throw;
-      //}
-      //finally
-      //{
-      //  _connection.Close();
-      //}
-
       return Ok(pageSize + " " + pageNumber);
     }
     [HttpPost("CurrentWeather")]
     public async Task<IActionResult> GetCurrentWeatherAsync([FromQuery] string search)
     {
-      var queryResult = await OpenWeatherRepo.TestAsync($"https://api.openweathermap.org/data/2.5/weather?q={search}&appid={_apiKey}");
-      //DatabaseRepo.SaveToDatabase(_connection ,queryResult);
-      return Ok(queryResult);
+      return Ok(search);
     }
 
 

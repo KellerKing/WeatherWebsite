@@ -132,3 +132,5 @@ G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPITes
 G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPITests\obj\Debug\.netcoreapp,version=v5.0\ref\WeatherAPITests.dll
 G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPITests\obj\Debug\.netcoreapp,version=v5.0\WeatherAPITests.pdb
 G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPITests\obj\Debug\.netcoreapp,version=v5.0\WeatherAPITests.genruntimeconfig.cache
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPITests\bin\Debug\.netcoreapp,version=v5.0\Service.ApiConnector.dll
+G:\Personal\03_Programmieren\04_Weather_Website\Backend\WeatherAPI\WeatherAPITests\bin\Debug\.netcoreapp,version=v5.0\Service.ApiConnector.pdb

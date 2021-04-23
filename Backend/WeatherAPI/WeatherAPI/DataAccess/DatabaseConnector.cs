@@ -8,110 +8,76 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherAPI.Models;
-using WeatherAPI.ServiceLibrary.Entities;
 
 namespace WeatherAPI.DataAccess
 {
   public class DatabaseConnector : IDatabaseConnector
   {
-    public void ClearOldTempEntries(MySqlConnection connecton, DateTime beforeDate)
+    private MySqlConnection _connection;
+
+    public DatabaseConnector(MySqlConnection connection)
+    {
+      _connection = connection;
+    }
+
+
+    public void ClearOldTempEntries(DateTime beforeDate)
     {
       var procedure = QueryCommands.commands[(int)CommandEnum.ClearOldEntrys];
 
-      using (connecton)
-      {
-        //beforeTimeParam
-        connecton.ExecuteAsync(procedure, new { beforeTimeparam = beforeDate }, commandType: System.Data.CommandType.StoredProcedure);
-      }
-
-      //var cmd = new MySqlCommand(procedure, connecton);
-      //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-      //try
-      //{
-      //  connecton.Open();
-      //  cmd.ExecuteNonQuery();
-      //  Console.WriteLine("Delete");
-      //}
-      //catch (Exception ex)
-      //{
-      //  Console.WriteLine(ex.Message);
-      //}
-      //finally
-      //{
-      //  connecton.Close();
-      //}
+      _connection.Clone().ExecuteAsync(procedure, new { beforeTimeparam = beforeDate }, commandType: System.Data.CommandType.StoredProcedure);
     }
 
-    public List<SearchResultDTO> GetOrteToRefresh(MySqlConnection connecton) //TODO: Löschen
+    public int DeleteTempById(List<TempDTO> ids)
     {
-      List<SearchResultDTO> searchResults = new List<SearchResultDTO>();
-
-      var procedure = QueryCommands.commands[(int)CommandEnum.GetAllOrteInDb];
-      var cmd = new MySqlCommand(procedure, connecton);
-      cmd.CommandType = System.Data.CommandType.StoredProcedure;
-      MySqlDataReader reader = null;
-
-      try
-      {
-        connecton.Open();
-
-        if (connecton.State != System.Data.ConnectionState.Open)
-          return searchResults;
-
-        reader = cmd.ExecuteReader();
-
-        while (reader.Read())
-        {
-          searchResults.Add(new SearchResultDTO
-          {
-            Ort = (string)reader[0],
-            Gemeinde = (string)reader[1]
-          });
-        }
-      }
-      catch (Exception ex) { Console.WriteLine(ex.Message); } 
-      finally
-      {
-        reader?.Close();
-        connecton?.Close();
-      }
-      return searchResults;
+      var procedure = QueryCommands.commands[(int)CommandEnum.GetActuals];
+      var myParams = ids.ToArray();
+       return _connection.Clone().Execute(procedure, myParams, commandType: System.Data.CommandType.StoredProcedure);
     }
 
+    public async Task<List<TempDTO>> GetAllActualAsync()
+    {
+      var procedure = QueryCommands.commands[(int)CommandEnum.GetActuals];
 
-    public async Task<List<GemeindeDTO>> GetOrteToRefreshAsync(MySqlConnection connecton)
+        var actuals = await _connection.Clone().QueryAsync<TempDTO>(procedure, null, commandType: System.Data.CommandType.StoredProcedure);
+        return actuals.ToList();
+    }
+
+    public async Task<List<TempDTO>> GetAllForecastsAsync()
+    {
+      var procedure = QueryCommands.commands[(int)CommandEnum.GetForecasts];
+
+
+        var forecasts = await _connection.Clone().QueryAsync<TempDTO>(procedure, null, commandType: System.Data.CommandType.StoredProcedure);
+        return forecasts.ToList();
+    }
+
+    public async Task<List<GemeindeDTO>> GetOrteToRefreshAsync()
     {
       var procedure = QueryCommands.commands[(int)CommandEnum.GetAllOrteInDb];
       IEnumerable<GemeindeDTO> orte;
 
-
-      using (var cnn = new MySqlConnection("server=127.0.0.1;user=root;password=1234;database=test"))
-      {
-        orte = await cnn.QueryAsync<GemeindeDTO>(procedure, null, commandType: System.Data.CommandType.StoredProcedure);
-      }
+        orte = await _connection.Clone().QueryAsync<GemeindeDTO>(procedure, null, commandType: System.Data.CommandType.StoredProcedure);
 
       return orte.ToList();
     }
 
-    public Task SaveWeatherToDatabaseAsync(TempDTO weatherData, MySqlConnection connecton)
+    public void SaveWeatherToDatabaseAsync(TempDTO weatherData)
     {
-      var procedure = QueryCommands.commands[(int)CommandEnum.InsertSingleWeatherInDb];
+      var procedure = QueryCommands.commands[(int)CommandEnum.UpdateSigngleTempForecast];
 
-      using (connecton)
-      {
-        return connecton.ExecuteAsync(procedure,
+         var result = _connection.Clone().Execute(procedure,
           new
           {
-            sTimeparam        = weatherData.Time,
-            ortParam          = weatherData.Ort,
+            sTimeParam        = weatherData.Time,
+            gemeindeParam     = weatherData.Gemeinde,
             tempMaxParam      = weatherData.TempMax,
             tempMinParam      = weatherData.TempMin,
             tempCurrentParam  = weatherData.TempCurrent,
-            descriptionParam  = weatherData.Description
+            descriptionParam  = weatherData.Description,
+            typeParam         = weatherData.Type
           },
           commandType: System.Data.CommandType.StoredProcedure);
-      }
     }
   }
 }

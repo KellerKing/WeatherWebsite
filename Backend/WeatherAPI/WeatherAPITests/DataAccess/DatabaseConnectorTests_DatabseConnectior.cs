@@ -9,11 +9,13 @@ namespace WeatherAPI.DataAccess.Tests
   {
 
     [TestMethod()]
-    public void SaveWeatherToDatabaseTest_GetOrteToRefreshAsync1()
+    public void GetOrteToRefreshAsync_Test()
     {
-      var db = new DatabaseConnector();
-      var result = db.GetOrteToRefreshAsync(new MySqlConnector.MySqlConnection()).Result;
-      Assert.IsNotNull(result);
+      //var db = new DatabaseConnector();
+      // var result = db.GetOrteToRefreshAsync().Result;
+      // Assert.IsNotNull(result);
+      Assert.Fail();
     }
+    
   }
 }

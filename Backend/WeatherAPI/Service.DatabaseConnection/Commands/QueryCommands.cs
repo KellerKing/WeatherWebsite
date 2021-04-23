@@ -9,8 +9,11 @@ namespace WeatherAPI.Models
   {
 
     GetAllOrteInDb = 0,
-    InsertSingleWeatherInDb = 1,
-    ClearOldEntrys = 2
+    UpdateSigngleTempForecast = 1,
+    ClearOldEntrys = 2,
+    GetForecasts = 3,
+    GetActuals = 4,
+    DeleteTempById = 5
 
   }
 
@@ -19,8 +22,11 @@ namespace WeatherAPI.Models
     public static string[] commands = new string[]
     {
       "select_gemeinde_for_update",
-      "insert_temp",
-      "clear_old_from_temp"
+      "update_temp_forecasts",
+      "clear_old_from_temp",
+      "select_forecasts",
+      "select_actual",
+      "delete_temp_by_id"
     };
 
 
