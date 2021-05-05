@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using WeatherAPI.Controllers;
+using WeatherAPI.DataAccess;
 using WeatherAPI.Models;
 
 namespace WeatherAPI
@@ -33,7 +34,7 @@ namespace WeatherAPI
       });
 
 
-      services.AddTransient<IHostedService, RefreshService>();
+      //services.AddTransient<IHostedService, RefreshService>();
 
     }
 

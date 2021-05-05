@@ -1,6 +1,7 @@
 ﻿using MySqlConnector;
 using Service.Database;
 using Service.Database.Contracts;
+using Service.Database.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,5 +17,6 @@ namespace WeatherAPI.DataAccess
     public Task<List<TempDTO>> GetAllForecastsAsync();
     public Task<List<TempDTO>> GetAllActualAsync();
     public int DeleteTempById(List<TempDTO> ids);
+    public List<OrtModel> GetAlleOrte();
   }
 }

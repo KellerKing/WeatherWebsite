@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using System.Threading.Tasks;
+using WeatherAPI.BuisnessLogic;
+using WeatherAPI.DataAccess;
 using WeatherAPI.Models;
 
 namespace WeatherAPI.Controllers
@@ -10,13 +12,11 @@ namespace WeatherAPI.Controllers
   public class WeatherController : ControllerBase
   {
 
-    private MySqlConnection _connection;
-    private string _apiKey;
+    private IDatabaseConnector _database;
 
     public WeatherController(ConnectionData connection)
     {
-      _connection = connection.SqlConnection;
-      _apiKey = connection.ApiKey;
+      _database = new DatabaseConnector(connection.SqlConnection);
     }
 
     //Binding
@@ -34,9 +34,22 @@ namespace WeatherAPI.Controllers
       return Ok(pageSize + " " + pageNumber);
     }
     [HttpPost("CurrentWeather")]
-    public async Task<IActionResult> GetCurrentWeatherAsync([FromQuery] string search)
+    public async Task<IActionResult> GetWeatherFromDatabase([FromQuery] string search)
     {
       return Ok(search);
+    }
+
+    [HttpGet("PossibleOrte")] //api/WeatherController/GetFromQueryAsync?pageSize=10&pageNumber=2
+    public async Task<IActionResult> GetPossibleOrte()
+    {
+      return Ok(WeatherControllerBuisnessLogic.GetOrte(_database));
+    }
+
+
+    [HttpGet("WeatherForOrt")] 
+    public async Task<IActionResult> GetWeatherForOrt([FromQuery] string search)
+    {
+      return Ok(WeatherControllerBuisnessLogic.GetOrte(_database));
     }
 
 

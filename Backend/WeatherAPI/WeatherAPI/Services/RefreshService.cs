@@ -43,7 +43,7 @@ namespace WeatherAPI.Controllers
                                                                                       TimeSpan.FromSeconds(0),
                                                                                       TimeSpan.FromSeconds(_updatesInSeconds));
 
-      _dbClearOldEntriesTimer = new Timer(async x => await WeatherUpdateBuisnessLogic.DeleteObsoleteWeather(new DatabaseConnector(_connection.Clone())),
+      _dbClearOldEntriesTimer = new Timer(async x => await WeatherUpdateBuisnessLogic.DeleteObsoleteWeather(new  DatabaseConnector(_connection.Clone())),
                                                                                       null,
                                                                                       TimeSpan.FromSeconds(0),
                                                                                       TimeSpan.FromSeconds(_clearsInSeconds));
